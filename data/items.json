@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "name": "mailbox",
+      "description": "A small mailbox. It can be opened.",
+      "weight": 50,
+      "takeable": false,
+      "type": "misc",
+      "location": "west_of_house"
+    },
+    {
+      "name": "leaflet",
+      "description": "A small leaflet that reads: 'Welcome to Zork!'",
+      "weight": 1,
+      "takeable": true,
+      "type": "misc",
+      "location": "west_of_house"
+    },
+    {
+      "name": "lamp",
+      "description": "A brass lantern that might provide light.",
+      "weight": 3,
+      "takeable": true,
+      "type": "misc",
+      "location": "kitchen"
+    },
+    {
+      "name": "rope",
+      "description": "A sturdy coil of rope.",
+      "weight": 5,
+      "takeable": true,
+      "type": "misc",
+      "location": "attic"
+    },
+    {
+      "name": "sword",
+      "description": "An elvish sword of great antiquity.",
+      "weight": 8,
+      "takeable": true,
+      "type": "weapon",
+      "damage": 15,
+      "value": 100,
+      "location": "living_room"
+    },
+    {
+      "name": "key",
+      "description": "A rusty iron key.",
+      "weight": 1,
+      "takeable": true,
+      "type": "key",
+      "location": "cellar"
+    }
+  ]
+}

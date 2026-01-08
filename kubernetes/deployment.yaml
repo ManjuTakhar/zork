@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zork-deployment
+  labels:
+    app: zork
+    version: v1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zork
+  template:
+    metadata:
+      labels:
+        app: zork
+        version: v1.0.0
+    spec:
+      containers:
+      - name: zork
+        image: zork:latest
+        imagePullPolicy: IfNotPresent
+        stdin: true
+        tty: true
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+        env:
+        - name: ZORK_SAVE_DIR
+          value: "/app/saves"
+        - name: TERM
+          value: "xterm-256color"
+        volumeMounts:
+        - name: saves
+          mountPath: /app/saves
+        - name: data
+          mountPath: /app/data
+          readOnly: true
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - ps aux | grep -v grep | grep zork || exit 1
+          initialDelaySeconds: 5
+          periodSeconds: 30
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - test -f /app/zork
+          initialDelaySeconds: 3
+          periodSeconds: 10
+      volumes:
+      - name: saves
+        persistentVolumeClaim:
+          claimName: zork-saves-pvc
+      - name: data
+        configMap:
+          name: zork-data
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zork-service
+  labels:
+    app: zork
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: zork

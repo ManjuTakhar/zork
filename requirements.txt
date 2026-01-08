@@ -1,0 +1,3 @@
+# Zork Text Adventure Game
+# No external dependencies required - uses Python standard library only
+# Requires Python 3.6 or higher

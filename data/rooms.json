@@ -1,0 +1,67 @@
+{
+  "rooms": [
+    {
+      "id": "west_of_house",
+      "name": "West of House",
+      "description": "You are standing in an open field west of a white house, with a boarded front door. There is a small mailbox here.",
+      "lit": true,
+      "locked": false
+    },
+    {
+      "id": "forest",
+      "name": "Forest",
+      "description": "This is a forest, with trees in all directions. To the east, there appears to be sunlight.",
+      "lit": true,
+      "locked": false
+    },
+    {
+      "id": "behind_house",
+      "name": "Behind House",
+      "description": "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.",
+      "lit": true,
+      "locked": false
+    },
+    {
+      "id": "kitchen",
+      "name": "Kitchen",
+      "description": "You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food.",
+      "lit": true,
+      "locked": false
+    },
+    {
+      "id": "living_room",
+      "name": "Living Room",
+      "description": "You are in the living room. There is a doorway to the east, a wooden door with strange gothic lettering to the west.",
+      "lit": true,
+      "locked": false
+    },
+    {
+      "id": "attic",
+      "name": "Attic",
+      "description": "This is the attic. The only exit is a stairway leading down. A large coil of rope is lying in the corner.",
+      "lit": true,
+      "locked": false
+    },
+    {
+      "id": "cellar",
+      "name": "Cellar",
+      "description": "You are in a dark and damp cellar with a narrow passageway leading north.",
+      "lit": false,
+      "locked": false
+    }
+  ],
+  "connections": [
+    {"from": "west_of_house", "direction": "north", "to": "forest"},
+    {"from": "west_of_house", "direction": "south", "to": "behind_house"},
+    {"from": "forest", "direction": "south", "to": "west_of_house"},
+    {"from": "behind_house", "direction": "north", "to": "west_of_house"},
+    {"from": "behind_house", "direction": "east", "to": "kitchen"},
+    {"from": "kitchen", "direction": "west", "to": "behind_house"},
+    {"from": "kitchen", "direction": "east", "to": "living_room"},
+    {"from": "kitchen", "direction": "up", "to": "attic"},
+    {"from": "kitchen", "direction": "down", "to": "cellar"},
+    {"from": "living_room", "direction": "west", "to": "kitchen"},
+    {"from": "attic", "direction": "down", "to": "kitchen"},
+    {"from": "cellar", "direction": "up", "to": "kitchen"}
+  ]
+}

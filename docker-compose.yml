@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  zork:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: zork:latest
+    container_name: zork-game
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./saves:/app/saves
+      - ./data:/app/data:ro
+    environment:
+      - ZORK_SAVE_DIR=/app/saves
+      - TERM=xterm-256color
+    restart: unless-stopped
+    networks:
+      - zork-network
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  zork-network:
+    driver: bridge
+
+volumes:
+  saves:
+    driver: local

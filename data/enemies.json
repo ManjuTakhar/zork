@@ -1,0 +1,34 @@
+{
+  "enemies": [
+    {
+      "name": "Troll",
+      "description": "A nasty-looking troll, brandishing a bloody axe.",
+      "health": 50,
+      "attack": 12,
+      "defense": 5,
+      "experience": 100,
+      "hostile": true,
+      "location": "cellar"
+    },
+    {
+      "name": "Grue",
+      "description": "It is pitch black. You are likely to be eaten by a grue.",
+      "health": 30,
+      "attack": 20,
+      "defense": 2,
+      "experience": 75,
+      "hostile": true,
+      "location": "dark_rooms"
+    },
+    {
+      "name": "Thief",
+      "description": "A shady character lurking in the shadows.",
+      "health": 40,
+      "attack": 10,
+      "defense": 8,
+      "experience": 80,
+      "hostile": true,
+      "location": "forest"
+    }
+  ]
+}
